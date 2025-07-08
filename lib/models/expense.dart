@@ -11,7 +11,7 @@ const categoryIcons = {
   Category.leisure: Icons.movie,
   Category.work: Icons.work,
   Category.health: Icons.health_and_safety,
-  Category.other: Icons.more_horiz,
+  Category.other: Icons.add_card,
 };
 
 class Expense {
@@ -32,5 +32,27 @@ class Expense {
 
   String get formattedDate {
     return '${date.day}/${date.month}/${date.year}';
+  }
+}
+
+class ExpenseBucket {
+  const ExpenseBucket({required this.category, required this.expenses});
+
+  final Category category;
+  final List<Expense> expenses;
+
+  ExpenseBucket.forCategory(List<Expense> allExpenses, this.category)
+    : expenses = allExpenses
+          .where((expense) => expense.category == category)
+          .toList();
+
+  // Sums up all expenses in the expense List and returns a sum
+  double get totalExpenses {
+    double sum = 0;
+
+    for (final expense in expenses) {
+      sum += expense.amount;
+    }
+    return sum;
   }
 }
