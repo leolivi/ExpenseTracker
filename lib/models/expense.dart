@@ -11,7 +11,7 @@ const categoryIcons = {
   Category.leisure: Icons.movie,
   Category.work: Icons.work,
   Category.health: Icons.health_and_safety,
-  Category.other: Icons.add_card,
+  Category.other: Icons.circle,
 };
 
 class Expense {
