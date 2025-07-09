@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:expense_tracker/widgets/expenses/amount_text_field.dart';
+import 'package:expense_tracker/widgets/expenses/title_text_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/models/expense.dart';
@@ -124,33 +126,14 @@ class _NewExpenseState extends State<NewExpense> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
-                          child: TextField(
-                            controller: _titleController,
-                            maxLength: 50,
-                            decoration: const InputDecoration(
-                              label: Text('Title'),
-                            ),
-                          ),
+                          child: TitleTextField(controller: _titleController),
                         ),
                         const SizedBox(width: 24),
-                        Expanded(
-                          child: TextField(
-                            controller: _amountController,
-                            keyboardType: TextInputType.number,
-                            decoration: const InputDecoration(
-                              prefixText: 'CHF ',
-                              label: Text('Amount'),
-                            ),
-                          ),
-                        ),
+                        AmountTextField(controller: _amountController),
                       ],
                     )
                   else
-                    TextField(
-                      controller: _titleController,
-                      maxLength: 50,
-                      decoration: const InputDecoration(label: Text('Title')),
-                    ),
+                    TitleTextField(controller: _titleController),
                   if (width >= 600)
                     Row(
                       children: [
@@ -194,16 +177,7 @@ class _NewExpenseState extends State<NewExpense> {
                   else
                     Row(
                       children: [
-                        Expanded(
-                          child: TextField(
-                            controller: _amountController,
-                            keyboardType: TextInputType.number,
-                            decoration: const InputDecoration(
-                              prefixText: 'CHF ',
-                              label: Text('Amount'),
-                            ),
-                          ),
-                        ),
+                        AmountTextField(controller: _amountController),
                         const SizedBox(width: 16),
                         Expanded(
                           child: Row(
